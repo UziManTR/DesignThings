@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111318">
+<title>DesignThings — Think in shapes</title>
+<style>
+:root{color-scheme:dark;--bg:#111318;--panel:#191c23;--panel2:#20242d;--line:#2b303b;--muted:#9299a8;--text:#f1f3f7;--accent:#a6f36b;--accent2:#d4ffae}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.4 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overflow:hidden}button,input,textarea{font:inherit}button{cursor:pointer;color:inherit;border:1px solid var(--line);background:var(--panel2);border-radius:9px;padding:8px 11px;transition:.15s}button:hover{border-color:#596273;background:#292e39}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--accent);outline-offset:2px}.app{height:100dvh;display:grid;grid-template-rows:58px 1fr}.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid var(--line);background:#15171d;gap:12px}.brand{display:flex;align-items:center;gap:10px;font-weight:750;letter-spacing:-.4px}.logo{width:28px;height:28px;border-radius:8px;background:var(--accent);color:#151a10;display:grid;place-items:center;font-weight:900;font-size:18px}.brand small{display:block;color:var(--muted);font-size:10px;font-weight:500;letter-spacing:1.2px}.top-actions{display:flex;align-items:center;gap:8px}.save-state{font-size:12px;color:var(--muted);margin-right:8px}.primary{background:var(--accent);color:#172010;border-color:var(--accent);font-weight:750}.primary:hover{background:var(--accent2);border-color:var(--accent2)}.workspace{display:grid;grid-template-columns:220px minmax(0,1fr) 260px;min-height:0}.sidebar{background:var(--panel);padding:16px 13px;overflow:auto}.left{border-right:1px solid var(--line)}.right{border-left:1px solid var(--line)}.section-label{font-size:10px;font-weight:800;letter-spacing:1.5px;color:var(--muted);margin:5px 7px 12px}.tool{width:100%;display:flex;align-items:center;gap:10px;text-align:left;margin-bottom:6px;background:transparent;border-color:transparent;padding:10px}.tool.active{background:#2a3327;border-color:#42543a;color:var(--accent)}.tool .ico{width:23px;text-align:center;font-size:17px}.hint{color:var(--muted);font-size:12px;line-height:1.6;margin:16px 8px}.divider{height:1px;background:var(--line);margin:17px 0}.board-area{position:relative;overflow:hidden;background-color:#12151b;background-image:radial-gradient(#303641 1px,transparent 1px);background-size:22px 22px}.board-wrap{position:absolute;inset:0;overflow:auto;display:flex;align-items:center;justify-content:center;padding:50px}.board{position:relative;width:900px;height:600px;flex:none;background:#f6f7f9;border-radius:5px;box-shadow:0 18px 60px #0008;overflow:hidden;background-image:linear-gradient(#e8ebef 1px,transparent 1px),linear-gradient(90deg,#e8ebef 1px,transparent 1px);background-size:20px 20px}.board-title{position:absolute;top:17px;left:20px;color:#a0a5ad;font-size:10px;letter-spacing:1.4px;text-transform:uppercase;pointer-events:none}.shape{position:absolute;display:flex;align-items:center;justify-content:center;min-width:20px;min-height:20px;border:2px solid #5b78d8;background:#c9d5ff;color:#24365f;border-radius:2px;cursor:move;user-select:none;white-space:pre-wrap;text-align:center;padding:5px;overflow:hidden}.shape.selected{outline:2px solid #a6f36b;outline-offset:3px;z-index:3}.shape .shape-text{pointer-events:none;font-size:13px;font-weight:650}.shape .note-dot{position:absolute;right:5px;top:4px;font-size:10px}.shape .resize{position:absolute;width:10px;height:10px;right:-5px;bottom:-5px;background:var(--accent);border:1px solid #28321f;border-radius:2px;cursor:nwse-resize;display:none}.shape.selected .resize{display:block}.empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#7d8490;pointer-events:none}.empty strong{display:block;color:#4d5561;font-size:18px;margin-bottom:5px}.board-footer{position:absolute;bottom:14px;left:16px;color:#a0a5ad;font-size:10px;pointer-events:none}.board-controls{position:absolute;bottom:16px;right:16px;display:flex;gap:6px}.board-controls button{background:#20242ddd;backdrop-filter:blur(8px)}.prop{margin-bottom:16px}.prop label{display:block;font-size:11px;color:var(--muted);margin:0 0 7px}.prop input,.prop textarea{width:100%;background:#11141a;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px}.prop textarea{min-height:76px;resize:vertical}.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}.swatches{display:flex;gap:7px;flex-wrap:wrap}.swatch{width:25px;height:25px;border-radius:7px;border:2px solid #ffffff40;padding:0}.swatch.chosen{outline:2px solid var(--accent);outline-offset:2px}.danger{color:#ff9b9b}.empty-props{color:var(--muted);font-size:12px;line-height:1.6;padding:8px}.kbd{border:1px solid #454b57;border-radius:5px;padding:2px 5px;font-size:10px;color:#b8bfca}.mobile-menu{display:none}
+@media(max-width:850px){.workspace{grid-template-columns:62px minmax(0,1fr)}.sidebar.left{padding:12px 7px}.section-label,.tool span:not(.ico),.hint,.left .divider{display:none}.tool{justify-content:center;padding:11px 5px}.right{display:none}.brand small,.save-state{display:none}.topbar{padding:0 10px}.board-wrap{justify-content:flex-start;padding:24px}.board{width:760px;height:520px}}
+@media(max-width:520px){.top-actions button{padding:7px 8px;font-size:12px}.workspace{grid-template-columns:50px minmax(0,1fr)}.logo{width:25px;height:25px}.brand{font-size:13px}.board-wrap{padding:15px}.board{width:700px;height:480px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">D</div><div>DesignThings<small>YOUR IDEAS, IN SHAPES</small></div></div>
+  <div class="top-actions"><span class="save-state" id="saveState">All changes saved</span><button id="undoBtn" title="Undo (Ctrl+Z)">↶</button><button id="redoBtn" title="Redo (Ctrl+Y)">↷</button><button id="clearBtn">Clear</button><button class="primary" id="exportBtn">Export SVG ↗</button></div>
+</header>
+<main class="workspace">
+<aside class="sidebar left">
+  <div class="section-label">TOOLS</div>
+  <button class="tool active" data-tool="select"><span class="ico">↖</span><span>Select <span class="kbd">V</span></span></button>
+  <button class="tool" data-tool="rect"><span class="ico">▭</span><span>Rectangle <span class="kbd">R</span></span></button>
+  <button class="tool" data-tool="note"><span class="ico">T</span><span>Add note <span class="kbd">N</span></span></button>
+  <div class="divider"></div>
+  <div class="section-label">QUICK ADD</div>
+  <button class="tool" id="addRect"><span class="ico">＋</span><span>New rectangle</span></button>
+  <button class="tool" id="addNote"><span class="ico">✎</span><span>New note</span></button>
+  <p class="hint">Draw on the canvas, move objects around and keep your ideas neatly aligned.</p>
+  <div class="divider"></div>
+  <div class="section-label">SHORTCUTS</div>
+  <p class="hint"><span class="kbd">V</span> Select &nbsp; <span class="kbd">R</span> Rectangle<br><span class="kbd">N</span> Note &nbsp; <span class="kbd">Del</span> Delete<br><span class="kbd">Ctrl Z</span> Undo</p>
+</aside>
+<section class="board-area">
+ <div class="board-wrap" id="boardWrap">
+  <div class="board" id="board">
+   <div class="board-title">Untitled canvas · 900 × 600</div>
+   <div class="empty" id="emptyState"><div><strong>Start with a shape</strong>Choose Rectangle and drag anywhere<br>to bring your idea to life.</div></div>
+   <div class="board-footer">DESIGNTHINGS / CANVAS 01</div>
+  </div>
+ </div>
+ <div class="board-controls"><button id="zoomOut">−</button><button id="zoomLabel">100%</button><button id="zoomIn">＋</button></div>
+</section>
+<aside class="sidebar right">
+ <div class="section-label">PROPERTIES</div>
+ <div id="properties"><div class="empty-props">Select an object to edit its size, color and notes.</div></div>
+ <div class="divider"></div>
+ <div class="section-label">CANVAS</div>
+ <div class="prop"><label>Canvas background</label><div class="swatches" id="canvasSwatches">
+  <button class="swatch chosen" data-bg="#f6f7f9" style="background:#f6f7f9"></button><button class="swatch" data-bg="#fff7e8" style="background:#fff7e8"></button><button class="swatch" data-bg="#eaf4ef" style="background:#eaf4ef"></button><button class="swatch" data-bg="#202631" style="background:#202631"></button>
+ </div></div>
+</aside>
+</main>
+</div>
+<script>
+(()=>{
+const board=document.getElementById('board'), props=document.getElementById('properties'), empty=document.getElementById('emptyState'), saveState=document.getElementById('saveState');
+let items=[],selected=null,tool='select',id=0,zoom=1,history=[],future=[],drag=null;
+const colors=['#c9d5ff','#c8f0d5','#ffe0b8','#ffd0dd','#e6d2ff','#d9e6eb'];
+const $=s=>document.querySelector(s);
+function snapshot(){history.push(JSON.stringify(items));if(history.length>60)history.shift();future=[]}
+function save(){localStorage.setItem('designthings-project',JSON.stringify({items,bg:board.style.backgroundColor}));saveState.textContent='Saved locally';}
+function changed(){save();render();renderProps()}
+function setTool(t){tool=t;document.querySelectorAll('[data-tool]').forEach(b=>b.classList.toggle('active',b.dataset.tool===t));board.style.cursor=t==='rect'?'crosshair':t==='note'?'text':'default'}
+function add(type,x=100+Math.random()*100,y=100+Math.random()*80){snapshot();const item={id:++id,type,x,y,w:type==='note'?190:160,h:type==='note'?76:110,color:type==='note'?'#fff0b8':colors[(id-1)%colors.length],text:type==='note'?'Double-click to write a note':'',note:''};items.push(item);selected=item.id;changed();setTool('select')}
+function render(){board.querySelectorAll('.shape').forEach(e=>e.remove());empty.style.display=items.length?'none':'grid';items.forEach(it=>{const el=document.createElement('div');el.className='shape'+(it.id===selected?' selected':'');el.dataset.id=it.id;el.style.cssText=`left:${it.x}px;top:${it.y}px;width:${it.w}px;height:${it.h}px;background:${it.color};border-color:${it.type==='note'?'#c39b42':'#7187ca'}`;el.innerHTML='<span class="shape-text"></span>'+(it.note?'<span class="note-dot">●</span>':'')+'<span class="resize"></span>';el.querySelector('.shape-text').textContent=it.text;board.append(el);el.addEventListener('pointerdown',e=>startDrag(e,it));el.addEventListener('dblclick',()=>{selected=it.id;renderProps();const field=props.querySelector('[name=text]');if(field){field.focus();field.select()}})})}
+function renderProps(){const it=items.find(x=>x.id===selected);if(!it){props.innerHTML='<div class="empty-props">Select an object to edit its size, color and notes.</div>';return}props.innerHTML=`<div class="prop"><label>Label / text</label><textarea name="text" maxlength="120">${esc(it.text)}</textarea></div><div class="pair"><div class="prop"><label>Width</label><input name="w" type="number" min="20" max="900" value="${it.w}"></div><div class="prop"><label>Height</label><input name="h" type="number" min="20" max="600" value="${it.h}"></div></div><div class="pair"><div class="prop"><label>X position</label><input name="x" type="number" value="${Math.round(it.x)}"></div><div class="prop"><label>Y position</label><input name="y" type="number" value="${Math.round(it.y)}"></div></div><div class="prop"><label>Fill color</label><div class="swatches">${colors.map(c=>`<button class="swatch ${c===it.color?'chosen':''}" data-color="${c}" style="background:${c}"></button>`).join('')}</div></div><div class="prop"><label>Private note</label><textarea name="note" placeholder="What is this shape for?">${esc(it.note)}</textarea></div><button class="danger" id="deleteSelected" style="width:100%">Delete object</button>`;
+props.querySelectorAll('input,textarea').forEach(el=>el.addEventListener('change',()=>{snapshot();const key=el.name;it[key]=key==='text'||key==='note'?el.value:Math.max(key==='w'||key==='h'?20:0,Math.min(key==='w'?900:key==='h'?600:900,Number(el.value)||0));changed()}));props.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{snapshot();it.color=b.dataset.color;changed()});$('#deleteSelected').onclick=deleteSelected}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function startDrag(e,it){if(tool!=='select')return;e.stopPropagation();selected=it.id;const resize=e.target.classList.contains('resize');drag={id:it.id,startX:e.clientX,startY:e.clientY,x:it.x,y:it.y,w:it.w,h:it.h,resize,moved:false};render();renderProps();e.target.setPointerCapture?.(e.pointerId);window.addEventListener('pointermove',move);window.addEventListener('pointerup',end,{once:true})}
+function move(e){if(!drag)return;const it=items.find(x=>x.id===drag.id);if(!it)return;const dx=(e.clientX-drag.startX)/zoom,dy=(e.clientY-drag.startY)/zoom;if(Math.abs(dx)+Math.abs(dy)>2&&!drag.moved){snapshot();drag.moved=true}if(drag.resize){it.w=Math.max(20,Math.min(900-drag.x,drag.w+dx));it.h=Math.max(20,Math.min(600-drag.y,drag.h+dy))}else{let nx=Math.max(0,Math.min(900-it.w,drag.x+dx)),ny=Math.max(0,Math.min(600-it.h,drag.y+dy));const threshold=7;for(const other of items){if(other.id===it.id)continue;for(const v of [other.x,other.x+other.w/2,other.x+other.w])if(Math.abs(nx-v)<threshold)nx=v-(v===other.x?0:v===other.x+other.w/2?it.w/2:it.w);for(const v of [other.y,other.y+other.h/2,other.y+other.h])if(Math.abs(ny-v)<threshold)ny=v-(v===other.y?0:v===other.y+other.h/2?it.h/2:it.h)}it.x=nx;it.y=ny}render()}
+function end(){window.removeEventListener('pointermove',move);if(drag?.moved){save();renderProps()}drag=null}
+board.addEventListener('pointerdown',e=>{if(e.target!==board)return;if(tool==='rect'||tool==='note'){const r=board.getBoundingClientRect();add((tool==='note'?'note':'rect'),Math.max(0,(e.clientX-r.left)/zoom),Math.max(0,(e.clientY-r.top)/zoom))}else{selected=null;render();renderProps()}});
+function deleteSelected(){if(!selected)return;snapshot();items=items.filter(i=>i.id!==selected);selected=null;changed()}
+function undo(){if(!history.length)return;future.push(JSON.stringify(items));items=JSON.parse(history.pop());selected=null;changed()}
+function redo(){if(!future.length)return;history.push(JSON.stringify(items));items=JSON.parse(future.pop());selected=null;changed()}
+document.querySelectorAll('[data-tool]').forEach(b=>b.onclick=()=>setTool(b.dataset.tool));$('#addRect').onclick=()=>add('rect');$('#addNote').onclick=()=>add('note');$('#undoBtn').onclick=undo;$('#redoBtn').onclick=redo;$('#clearBtn').onclick=()=>{if(!items.length)return;if(confirm('Clear this canvas?')){snapshot();items=[];selected=null;changed()}};$('#zoomIn').onclick=()=>setZoom(zoom+.1);$('#zoomOut').onclick=()=>setZoom(zoom-.1);function setZoom(v){zoom=Math.max(.6,Math.min(1.4,v));board.style.transform=`scale(${zoom})`;$('#zoomLabel').textContent=Math.round(zoom*100)+'%'}
+$('#canvasSwatches').onclick=e=>{const b=e.target.closest('[data-bg]');if(!b)return;board.style.backgroundColor=b.dataset.bg;document.querySelectorAll('[data-bg]').forEach(x=>x.classList.toggle('chosen',x===b));save()};
+document.addEventListener('keydown',e=>{if(e.target.matches('input,textarea'))return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();undo()}else if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='y'){e.preventDefault();redo()}else if(e.key==='Delete'||e.key==='Backspace')deleteSelected();else if(e.key.toLowerCase()==='v')setTool('select');else if(e.key.toLowerCase()==='r')setTool('rect');else if(e.key.toLowerCase()==='n')setTool('note')});
+$('#exportBtn').onclick=()=>{const bg=board.style.backgroundColor||'#f6f7f9';const shapes=items.map(it=>`<rect x="${it.x}" y="${it.y}" width="${it.w}" height="${it.h}" rx="3" fill="${it.color}" stroke="${it.type==='note'?'#c39b42':'#7187ca'}" stroke-width="2"/><text x="${it.x+it.w/2}" y="${it.y+it.h/2}" text-anchor="middle" dominant-baseline="middle" font-family="Arial" font-size="14" font-weight="600" fill="#27344d">${esc(it.text).replace(/\n/g,' ')}</text>`).join('');const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600"><rect width="100%" height="100%" fill="${bg}"/>${shapes}</svg>`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));a.download='designthings-canvas.svg';a.click();URL.revokeObjectURL(a.href)};
+try{const saved=JSON.parse(localStorage.getItem('designthings-project'));if(saved){items=saved.items||[];if(saved.bg)board.style.backgroundColor=saved.bg;id=Math.max(0,...items.map(i=>i.id));}}catch{}render();renderProps();
+})();
+</script>
+</body></html>
